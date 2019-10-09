@@ -1,0 +1,11 @@
+<app-article [articles]="articles" (deleteArticle)="deleteArticle($event)"></app-article>
+
+<input #headline type="text"/>
+<br>
+<input #author type="text"/>
+<br>
+<input #content type="text"/>
+<br>
+
+<button (click)="addArticle(headline.value, author.value, content.value)">Add</button>
+

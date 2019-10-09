@@ -1,0 +1,9 @@
+<div *ngFor="let article of articles">
+    <p [ngClass] = "{upperedtext:true}">{{article.headline}}</p>
+    <div class="tooltip" id="tooltipID">
+        <a appExample>{{article.content}}</a> by {{article.author}}
+        <span id="tooltiptextID"class="tooltiptext">sad</span>
+    </div>
+    <br>
+    <button (click)="deleteArticle.emit(article)">Delete</button>
+</div> 
