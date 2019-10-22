@@ -1,11 +1,15 @@
-<app-article [articles]="articles" (deleteArticle)="deleteArticle($event)"></app-article>
+<h3>Modern Information Technology articles:</h3>
+<app-article [navigationTmpl]="navigationTmpl" [articles]="articles" (deleteArticle)="deleteArticle($event)">
+</app-article>
 
-<input #headline type="text"/>
-<br>
-<input #author type="text"/>
-<br>
-<input #content type="text"/>
-<br>
+<ng-template #navigationTmpl>
+    <a [ngClass]="{curve:true}">
+        This is an article verified by Honcharenko R.
+    </a>
+</ng-template>
 
+<p><input placeholder="Заголовок" #headline type="text" /></p>
+<p><input placeholder="Автор" #author type="text" /></p>
+<p><textarea placeholder="Текст статьи" #content></textarea></p>
+<br>
 <button (click)="addArticle(headline.value, author.value, content.value)">Add</button>
-

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleComponent } from './articles/article/article.component';
-import { ExampleDirective } from './example.directive';
+import { UpperStringPipe } from './UpperEveryStringPipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { ExampleDirective } from './example.directive';
     UserinfoComponent,
     ArticlesComponent,
     ArticleComponent,
-    ExampleDirective
+    UpperStringPipe
   ],
   imports: [
     BrowserModule,

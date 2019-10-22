@@ -1,9 +1,26 @@
-<div *ngFor="let article of articles">
-    <p [ngClass] = "{upperedtext:true}">{{article.headline}}</p>
-    <div class="tooltip" id="tooltipID">
-        <a appExample>{{article.content}}</a> by {{article.author}}
-        <span id="tooltiptextID"class="tooltiptext">sad</span>
+<ng-content></ng-content>
+
+<div *ngFor="let article of articles; let i = index">
+    <div *ngIf="article.author !== 'Roma' ; else romaGrey">
+        <p [ngClass]="{upperedtext:true}">{{article.headline}}</p>
+        <div>
+            <a>{{article.content | uppereverystring }}</a>
+            <br />by {{article.author | uppercase}}
+        </div>
     </div>
-    <br>
-    <button (click)="deleteArticle.emit(article)">Delete</button>
-</div> 
+    <div>
+        <ng-container *ngTemplateOutlet="navigationTmpl"></ng-container>
+    </div>
+    <div>Created: {{ article.date | date: 'medium' }}</div>
+    <p><button (click)="deleteArticle.emit(article)">Delete</button></p>
+
+    <ng-template #romaGrey>
+        <div style="background-color:grey;">
+            <p [ngClass]="{upperedtext:true}">{{article.headline}}</p>
+            <div>
+                <a>{{article.content}}</a>
+                <br />by {{article.author}}
+            </div>
+        </div>
+    </ng-template>
+</div>
