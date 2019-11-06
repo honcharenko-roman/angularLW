@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Article } from '../models/article.mode';
 import { ArticleComponent } from './article/article.component';
 import { DatePipe } from '@angular/common';
+import { Article } from 'src/assets/models/article.mode';
 
 @Component({
   selector: 'app-articles',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
-import { Article } from 'src/app/models/article.mode';
 import { DatePipe } from '@angular/common';
+import { Article } from 'src/assets/models/article.mode';
 
 
 @Component({
