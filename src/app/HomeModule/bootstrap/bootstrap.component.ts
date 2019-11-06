@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bootstrap',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bootstrap.component.scss']
 })
 export class BootstrapComponent implements OnInit {
+
+
+  myForm: FormGroup = new FormGroup({
+    email: new FormControl(),
+  });
 
   constructor() { }
 

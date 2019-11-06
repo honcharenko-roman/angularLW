@@ -11,6 +11,12 @@ import { UpperStringPipe } from 'src/assets/CustomPipes/UpperEveryStringPipe';
 import { BootstrapComponent } from './HomeModule/bootstrap/bootstrap.component';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CommonModule } from '@angular/common';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
 const appRoutes: Routes = [
   { path: 'articles', component: ArticlesComponent },
   {
@@ -33,6 +39,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
