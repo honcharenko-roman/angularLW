@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,21 +8,35 @@ import { UserinfoComponent } from './HomeModule/userinfo/userinfo.component';
 import { ArticlesComponent } from './HomeModule/articles/articles.component';
 import { ArticleComponent } from './HomeModule/articles/article/article.component';
 import { UpperStringPipe } from 'src/assets/CustomPipes/UpperEveryStringPipe';
-import { BootstrapComponent } from './HomeModule/bootstrap/bootstrap.component';
+import { BootstrapComponent } from './HomeModule/table/bootstrap/bootstrap.component';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TableComponent } from './HomeModule/table/table.component';
+import { RegistrationService } from './HomeModule/services/RegistredUsers.service';
+import { WeatherComponent } from './HomeModule/weather/weather.component';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
   { path: 'articles', component: ArticlesComponent },
   {
-    path: 'test',
+    path: 'table/add',
     component: BootstrapComponent,
     data: { title: 'Bootstrap' }
+  },
+  {
+    path: 'table',
+    component: TableComponent,
+    data: { title: 'Table' }
+  },
+  {
+    path: 'weather',
+    component: WeatherComponent,
+    data: { title: 'Weather' }
   }
 ];
 
@@ -33,10 +47,14 @@ const appRoutes: Routes = [
     ArticlesComponent,
     ArticleComponent,
     UpperStringPipe,
-    BootstrapComponent
+    BootstrapComponent,
+    TableComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
@@ -44,7 +62,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      { enableTracing: false }
     )
   ],
   providers: [],

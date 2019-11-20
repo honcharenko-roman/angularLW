@@ -11,10 +11,31 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-<h1>Angular Router</h1>
-<nav>
-  <a routerLink="/articles" routerLinkActive="active">Articles     </a>
-  <a routerLink="/table" routerLinkActive="active">Table     </a>
-  <a routerLink="/weather" routerLinkActive="active">Weather</a>
-</nav>
-<router-outlet></router-outlet>
+
+<div class="d-flex justify-content-between">
+  <h2>Weather</h2>
+</div>
+<div class="mt-4 table-responsive">
+	<table class="table table-striped table-sm">
+  	<thead>
+      <tr>
+        <th>Day</th>
+        <th>Clouds, %</th>
+        <th>Humidity, %</th>
+        <th>Pressure, mm Hg</th>
+        <th>SeaLevel, sm</th>
+        <th>Temp , C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let weather of weathers; let userIndex = index">
+        <td>{{ getData(userIndex) | date: 'MMM d, y' }}</td>
+        <td>{{ weather.clouds }}</td>
+        <td>{{ weather.humidity }}</td>
+        <td>{{ weather.pressure }}</td>
+        <td>{{ weather.seaLevel }}</td>
+        <td>{{ weather.temp }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
