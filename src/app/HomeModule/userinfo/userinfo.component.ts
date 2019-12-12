@@ -7,9 +7,9 @@ import { User } from 'src/assets/models/user.model';
   styleUrls: ['./userinfo.component.scss']
 })
 export class UserinfoComponent implements OnInit {
-    public text: string;
-    public name: string;
-    user: User;
+  public text: string;
+  public name: string;
+  user: User;
 
   constructor() {
   }

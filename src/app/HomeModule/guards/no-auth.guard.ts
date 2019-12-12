@@ -8,16 +8,18 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class NoAuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+
+  constructor(private authService: AuthService, private router: Router) { }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.authService.isLoggedIn) {
-        return true;
-      }
+    if (!this.authService.isLoggedIn) {
+      return true;
+    }
 
-      this.router.navigate(['/', this.authService.getUserRole()]);
-      return false;
+    this.router.navigate(['/', this.authService.getUserRole()]);
+    return false;
   }
 
 }

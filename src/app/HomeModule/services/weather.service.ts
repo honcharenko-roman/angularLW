@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class WeatherService {
 
     private readonly API = environment.weatherURL;
+
     constructor(private httpClient: HttpClient) {
     }
 

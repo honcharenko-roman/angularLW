@@ -15,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: 'admin' },
     children: [
-      { path: 'weather', component: WeatherComponent},
+      { path: 'weather', component: WeatherComponent },
       { path: 'table', component: TableComponent },
       { path: 'articles', component: ArticlesComponent }
     ]
@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: 'user' },
     children: [
-      { path: 'weather', component: WeatherComponent},
+      { path: 'weather', component: WeatherComponent },
       { path: 'articles', component: ArticlesComponent }
     ]
   },
