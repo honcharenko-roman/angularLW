@@ -17,28 +17,21 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TableComponent } from './HomeModule/table/table.component';
 import { RegistrationService } from './HomeModule/services/RegistredUsers.service';
 import { WeatherComponent } from './HomeModule/weather/weather.component';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { LoginComponent } from './HomeModule/login/login.component';
+import { AuthService } from './HomeModule/services/auth.service';
+import { TokenInterceptor } from './HomeModule/services/token.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
+function getToken() {
+  return localStorage.getItem('accessToken');
+}
 
-const appRoutes: Routes = [
-  { path: 'articles', component: ArticlesComponent },
-  {
-    path: 'table/add',
-    component: BootstrapComponent,
-    data: { title: 'Bootstrap' }
-  },
-  {
-    path: 'table',
-    component: TableComponent,
-    data: { title: 'Table' }
-  },
-  {
-    path: 'weather',
-    component: WeatherComponent,
-    data: { title: 'Weather' }
-  }
-];
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -50,6 +43,7 @@ const appRoutes: Routes = [
     BootstrapComponent,
     TableComponent,
     WeatherComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,12 +54,28 @@ const appRoutes: Routes = [
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false }
-    )
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: getToken,
+        whitelistedDomains: ['pnit-lessons.azurewebsites.net'],
+        blacklistedRoutes: ['/Token']
+      }
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    RegistrationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

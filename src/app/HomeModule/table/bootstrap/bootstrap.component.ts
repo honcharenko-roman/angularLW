@@ -11,7 +11,6 @@ import {Router} from '@angular/router'
 @Component({
   selector: 'app-bootstrap',
   templateUrl: './bootstrap.component.html',
-  providers: [RegistrationService],
   styleUrls: ['./bootstrap.component.scss']
 })
 

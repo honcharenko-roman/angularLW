@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "articles": "Статьи",
+        "weather": "Погода",
+        "table": "Таблица",
+        "login": "Вход",
+        "logout": "Выход"
+    }
+}

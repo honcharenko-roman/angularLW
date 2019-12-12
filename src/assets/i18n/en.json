@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "articles": "Articles",
+        "weather": "Weather",
+        "table": "Table",
+        "login": "LogIn",
+        "logout": "LogOut"
+    }
+}

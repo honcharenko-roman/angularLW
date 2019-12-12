@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  weatherURL: 'http://api.openweathermap.org/data/2.5/forecast?id=698740&units=metric&cnt=8&APPID=b7907ab54e93340d252cb8c1c9cbe567'
+  weatherURL: 'http://api.openweathermap.org/data/2.5/forecast?id=698740&units=metric&cnt=8&APPID=b7907ab54e93340d252cb8c1c9cbe567',
+  apiUrl: 'https://pnit-lessons.azurewebsites.net/api'
 };
 
 /*
