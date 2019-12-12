@@ -24,6 +24,14 @@ export class AppComponent implements OnInit {
     this.translateService.use(localStorage.getItem('lang'));
   }
 
+  setRu(){
+    this.translateService.use('ru');
+  }
+
+  setEng(){
+    this.translateService.use('en');
+  }
+
   LogOut() {
     this.authService.logout();
   }

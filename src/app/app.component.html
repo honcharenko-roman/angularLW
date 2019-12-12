@@ -16,7 +16,7 @@
     <div *ngIf = "isLogged()">
         <button routerLink="admin/articles" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.articles' | translate}}</button>
         <button routerLink="admin/table" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.table' | translate}}</button>
-        <button routerLink="weather" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.weather' | translate}}</button>
+        <button routerLink="admin/weather" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.weather' | translate}}</button>
         <button class="pl-3 pr-3 btn btn-dark" (click)="LogOut()">{{'navbar.logout' | translate}}</button>
     </div>
     <div *ngIf = "!isLogged()">
@@ -25,5 +25,7 @@
         <button routerLink="weather" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.weather' | translate}}</button>
         <button routerLink="admin/login" routerLinkActive="active" class="pl-3 pr-3 btn btn-dark">{{'navbar.login' | translate}}</button>
     </div>
+    <button class="pl-3 pr-3 btn btn-dark" (click)="setEng()">En</button>
+    <button class="pl-3 pr-3 btn btn-dark" (click)="setRu()">Ru</button>
 </nav>
 <router-outlet></router-outlet>
